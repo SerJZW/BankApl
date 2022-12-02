@@ -27,7 +27,7 @@ namespace BankAplNew.MainApl
                 int save = 0;
                 int nums = 8;
                 Console.WriteLine("Что вы хотите сделать?");
-                Console.WriteLine($"0 - Выход  \n1 - Узнать Дату и Время \n2 - Ваш баланс \n3 - Внести Затраты \n4 - Отложить деньги \n5 - Все операции \n6 - Поступление Зарплаты \n7 - Конвертер ");
+                Console.WriteLine($"0 - Выход  \n1 - Узнать Дату и Время \n2 - Ваш баланс \n3 - Внести Затраты \n4 - Отложить деньги \n5 - Все операции \n6 - Снять сбережения \n7 - Конвертер ");
                 nums = Convert.ToInt32(Console.ReadLine());
 
                 switch (nums)
@@ -82,7 +82,32 @@ namespace BankAplNew.MainApl
                         Console.WriteLine("Японская Йена     " + JPYBalance);
                         continue;
 
-//case 6 v razrobotke
+                    case 6:
+                        Console.WriteLine("Сколько сбережений нужно снять? Сейчас " + saveMoney + "\n1) Самостоятельный Ввод \n2) 25% \n3) 50%");
+                        int choice3 = Convert.ToInt32(Console.ReadLine());
+                        int savemoneych;
+                        
+                        if (choice3 == 1)
+                        {
+                            savemoneych = Convert.ToInt32(Console.ReadLine());
+                            saveMoney = saveMoney - savemoneych;
+                            balances = balances + savemoneych;
+                        }
+                        if (choice3 == 3)
+                        {
+                            savemoneych = (saveMoney / 100) * 50;
+                            saveMoney = saveMoney - savemoneych;
+                            balances = balances + savemoneych;
+                        }
+                        if(choice3 == 2)
+                        {
+                            savemoneych = (saveMoney / 100) * 25;
+                            saveMoney = saveMoney - savemoneych;
+                            balances = balances + savemoneych;
+                        }
+                      
+                        Console.WriteLine("Осталось сбережений " + saveMoney);
+                        continue;
                     case 7:
                         Console.WriteLine("В какую валюту нужно перевести? \n0)Выход \n1)EUR \n2)USD \n3)JPY \n4)RUB");
                         int choice = Convert.ToInt32(Console.ReadLine());
